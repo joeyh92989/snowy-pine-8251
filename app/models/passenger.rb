@@ -1,3 +1,4 @@
 class Passenger < ApplicationRecord
-  belongs_to :flight
+  has_many :flight_passengers
+  has_many :flights , through: :flight_passengers 
 end
