@@ -2,9 +2,12 @@
     <div id="flight-<%= flight.id %>">
     <p>Flight Number: <%=flight.number%><p>
     <p>Airline: <%=flight.airline.name%><p>
+    </div>
     <% flight.passengers.each do |passenger| %>
+    <div id="passenger-<%= passenger.id %>">
     <p>Passenger: <%=passenger.name%>
-    <%= button_to "Delete" %>
+    <%= button_to "Delete", "/flight_passengers/#{passenger.id}", params: { flight_id: :"#{flight.id}", }, method: :delete %>
+    </div>
     <%end%>
     <br>
     </div>

@@ -20,29 +20,27 @@ RSpec.describe 'flight index' do
       within "#flight-#{@flight_1.id}" do
         expect(page).to have_content("Flight Number: #{@flight_1.number}")
         expect(page).to have_content("Airline: #{@flight_1.airline.name}")
+      end
+        within "#passenger-#{@passenger_1.id}" do
         expect(page).to have_content("Passenger: #{@passenger_1.name}")
+
+      end
+      within "#passenger-#{@passenger_2.id}" do
         expect(page).to have_content("Passenger: #{@passenger_2.name}")
-      end
-      within "#flight-#{@flight_2.id}" do
-        expect(page).to have_content("Flight Number: #{@flight_2.number}")
-        expect(page).to have_content("Airline: #{@flight_2.airline.name}")
-        expect(page).to have_content("Passenger: #{@passenger_3.name}")
-        expect(page).to have_content("Passenger: #{@passenger_4.name}")
-      end
-      within "#flight-#{@flight_3.id}" do
-        expect(page).to have_content("Flight Number: #{@flight_3.number}")
-        expect(page).to have_content("Airline: #{@flight_3.airline.name}")
-        expect(page).to have_content("Passenger: #{@passenger_5.name}")
-        expect(page).to have_content("Passenger: #{@passenger_6.name}")
       end
     end
   end
   describe 'it can remove a passenger' do
     it 'a button under each passenger to delete' do
-      save_and_open_page
-      within "#flight-#{@flight_1.id}" do
+      within "#passenger-#{@passenger_1.id}" do
         expect(page).to have_button('Delete')
       end
+    end
+    it 'can delete an associations' do
+      within "#passenger-#{@passenger_1.id}" do
+        click_button 'Delete'
+      end
+      expect(page).to_not have_content('@passenger_1.name')
     end
   end
 end
