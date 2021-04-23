@@ -31,15 +31,17 @@ RSpec.describe 'flight index' do
     end
   end
   describe 'it can remove a passenger' do
-    it 'a button under each passenger to delete' do
+    it 'has a button under each passenger to delete' do
       within "#passenger-#{@passenger_1.id}" do
         expect(page).to have_button('Delete')
       end
     end
     it 'can delete an associations' do
+
       within "#passenger-#{@passenger_1.id}" do
         click_button 'Delete'
       end
+
       expect(page).to_not have_content('@passenger_1.name')
     end
   end

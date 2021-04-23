@@ -27,7 +27,7 @@ RSpec.describe Airline, type: :model do
       flight_passenger_4 = FlightPassenger.create!(flight: flight_1, passenger: passenger_2)
       flight_passenger_5 = FlightPassenger.create!(flight: flight_2, passenger: passenger_1)
       flight_passenger_6 = FlightPassenger.create!(flight: flight_3, passenger: passenger_3)
-
+      
       expect(airline_1.passengers).to eq(["Joey", "Olivia"])
     end
   end
