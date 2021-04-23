@@ -4,6 +4,7 @@
     <p>Airline: <%=flight.airline.name%><p>
     <% flight.passengers.each do |passenger| %>
     <p>Passenger: <%=passenger.name%>
+    <%= button_to "Delete" %>
     <%end%>
     <br>
     </div>

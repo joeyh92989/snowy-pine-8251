@@ -22,7 +22,6 @@ RSpec.describe 'flight index' do
         expect(page).to have_content("Airline: #{@flight_1.airline.name}")
         expect(page).to have_content("Passenger: #{@passenger_1.name}")
         expect(page).to have_content("Passenger: #{@passenger_2.name}")
-
       end
       within "#flight-#{@flight_2.id}" do
         expect(page).to have_content("Flight Number: #{@flight_2.number}")
@@ -35,6 +34,14 @@ RSpec.describe 'flight index' do
         expect(page).to have_content("Airline: #{@flight_3.airline.name}")
         expect(page).to have_content("Passenger: #{@passenger_5.name}")
         expect(page).to have_content("Passenger: #{@passenger_6.name}")
+      end
+    end
+  end
+  describe 'it can remove a passenger' do
+    it 'a button under each passenger to delete' do
+      save_and_open_page
+      within "#flight-#{@flight_1.id}" do
+        expect(page).to have_button('Delete')
       end
     end
   end
